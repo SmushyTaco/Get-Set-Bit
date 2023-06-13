@@ -13,7 +13,7 @@ A Simple C Library For Bit Manipulation
     - [Checked](#checked-1)
     - [Checked Crash](#checked-crash-1)
 ## Prerequisites
-This uses the `C23 standard` and the `Bounds-checking (Annex K)` methods. Make sure your compiler supports these!
+This uses the `C99 standard`. Make sure your compiler supports this!
 ## Usage
 
 In your `CMakeLists.txt`, add the following:
