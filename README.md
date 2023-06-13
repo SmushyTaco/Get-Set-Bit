@@ -1,5 +1,17 @@
 # Get Set Bit
 A Simple C Library For Bit Manipulation
+## Table of Contents
+- [Prerequisites](#prerequisites)
+- [Usage](#usage)
+- [Documentation](#documentation)
+  - [Getters](#getters)
+    - [Unchecked](#unchecked)
+    - [Checked](#checked)
+    - [Checked Crash](#checked-crash)
+  - [Setters](#setters)
+    - [Unchecked](#unchecked-1)
+    - [Checked](#checked-1)
+    - [Checked Crash](#checked-crash-1)
 ## Prerequisites
 This uses the `C23 standard` and the `Bounds-checking (Annex K)` methods. Make sure your compiler supports these!
 ## Usage
