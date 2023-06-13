@@ -11,7 +11,7 @@ static inline bool isInBoundsWithPointer(const unsigned char position, const siz
 }
 static inline void crashIfOutOfBounds(const unsigned char position, const size_t bitSize, const char typeName[]) {
     if (isInBounds(position, bitSize)) return;
-    fprintf(stderr, "Error: The position of \"%hhu\" is too large for the \"%s\" type which is of size %zu in bits. Remember the position is zero based meaning the smallest position is \"0\" and the largest position is \"%zu\"!", position, typeName, bitSize, bitSize - 1);
+    fprintf(stderr, "Error: The position of \"%hhu\" is too large for the \"%s\" type which is of size %zu in bits. Remember the position is zero based meaning the smallest position is \"0\" and the largest position is \"%zu\" for the \"%s\" type!", position, typeName, bitSize, bitSize - 1, typeName);
     exit(EXIT_FAILURE);
 }
 // Get Signed Char
