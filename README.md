@@ -51,7 +51,7 @@ int main(void) {
 ```
 
 ## Documentation
-The documentation is very simple, there are three varients of getters and three varients of setters and these varients are provided for all integer types (`signed char`, `unsigned char`, `char`, `signed short`, `unsigned short`, `short`, `signed int`, `unsigned int`, `int`, `signed long`, `unsigned long`, `long`, `signed long long`, `unsigned long long`, and `long long`).
+The documentation is very simple, there are three varients of getters and three varients of setters and these varients are provided for all integer types (`signed char`, `unsigned char`, `char`, `signed short`, `unsigned short`, `short`, `signed int`, `unsigned int`, `int`, `signed long`, `unsigned long`, `long`, `signed long long`, `unsigned long long`, `long long`, `int8_t`, `uint8_t`, `int16_t`, `uint16_t`, `int32_t`, `uint32_t`, `int64_t`, `uint64_t`, `int_fast8_t`, `uint_fast8_t`, `int_fast16_t`, `uint_fast16_t`, `int_fast32_t`, `uint_fast32_t`, `int_fast64_t`, `uint_fast64_t`, `int_least8_t`, `uint_least8_t`, `int_least16_t`, `uint_least16_t`, `int_least32_t`, `uint_least32_t`, `int_least64_t`, `uint_least64_t`, `intmax_t`, `uintmax_t`, `intptr_t`, and `uintptr_t`).
 
 Both getters and setters have a position parameter, keep in mind that this parameter is `zero based`. For example, an `int` is `32 bits` on most machines so the smallest position is `0` and the largest position is `31`.
 
