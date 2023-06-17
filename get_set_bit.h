@@ -7,8 +7,9 @@
 // Error Handling For Checked Methods
 static inline bool isInBounds(const unsigned char position, const size_t bitSize) { return position < bitSize; }
 static inline bool isInBoundsWithPointer(const unsigned char position, const size_t bitSize, bool *restrict const isPositionInBounds) {
-    *isPositionInBounds = isInBounds(position, bitSize);
-    return *isPositionInBounds;
+    bool isPositionInBoundsLocal = isInBounds(position, bitSize);
+    if (isPositionInBounds) *isPositionInBounds = isPositionInBoundsLocal;
+    return isPositionInBoundsLocal;
 }
 static inline void crashIfOutOfBounds(const unsigned char position, const size_t bitSize, const char typeName[]) {
     if (isInBounds(position, bitSize)) return;
