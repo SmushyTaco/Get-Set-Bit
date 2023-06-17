@@ -1004,4 +1004,27 @@ static inline void setBitUintPtrTCheckedCrash(uintptr_t *restrict const number, 
     crashIfOutOfBounds(position, sizeof(uintptr_t) * CHAR_BIT, typeName);
     setBitUintPtrT(number, position, value);
 }
+// Get size_t
+static inline bool getBitSizeT(const size_t number, const unsigned char position) { return ((number & ((size_t)1ULL << position)) != 0ULL); }
+static inline bool getBitSizeTChecked(const size_t number, const unsigned char position, bool *restrict const isPositionInBounds) {
+    if (!isInBoundsWithPointer(position, sizeof(size_t) * CHAR_BIT, isPositionInBounds)) return false;
+    return getBitSizeT(number, position);
+}
+static inline bool getBitSizeTCheckedCrash(const size_t number, const unsigned char position) {
+    const char typeName[] = "size_t";
+    crashIfOutOfBounds(position, sizeof(size_t) * CHAR_BIT, typeName);
+    return getBitSizeT(number, position);
+}
+// Set size_t
+static inline void setBitSizeT(size_t *restrict const number, const unsigned char position, const bool value) { *number = (size_t) ((*number & ~((size_t)1ULL << position)) | (value ? ((size_t)1ULL << position) : 0U)); }
+static inline bool setBitSizeTChecked(size_t *restrict const number, const unsigned char position, const bool value) {
+    if (!isInBounds(position, sizeof(size_t) * CHAR_BIT)) return false;
+    setBitSizeT(number, position, value);
+    return true;
+}
+static inline void setBitSizeTCheckedCrash(size_t *restrict const number, const unsigned char position, const bool value) {
+    const char typeName[] = "size_t";
+    crashIfOutOfBounds(position, sizeof(size_t) * CHAR_BIT, typeName);
+    setBitSizeT(number, position, value);
+}
 #endif //SMUSHYTACO_GET_SET_BIT_H
