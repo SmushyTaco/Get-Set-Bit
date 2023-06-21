@@ -12,6 +12,7 @@ A Simple C Library For Bit Manipulation
     - [Unchecked](#unchecked-1)
     - [Checked](#checked-1)
     - [Checked Crash](#checked-crash-1)
+- [Bit Field Setting Documentation](#bit-field-setting-documentation)
 ## Prerequisites
 This uses the `C99 standard`. Make sure your compiler supports this!
 ## Usage
@@ -196,3 +197,21 @@ int main(void) {
 
 ```
 and output the error message `Error: The position of "32" is too large for the "int" type which is of size 32 in bits. Remember the position is zero based meaning the smallest position is "0" and the largest position is "31"!` instead.
+## Bit Field Setting Documentation
+This section is short because you are expected to read what you saw before and apply many of those principles here. Signed ints are used for the examples but all types and typedefs are supported like seen before and follow the same naming conventions.
+```c
+// This counts how many bits a number you input takes up. This can be used to prevent overflows.
+static inline unsigned char countBitsSignedInt(signed int number);
+// This takes in your variable storing your bit field, the starting position of the bit field, and the ending position of it, and then returns the value to you.
+static inline signed int getBitFieldSignedInt(const signed int bitField, const unsigned char startPosition, const unsigned char endPosition);
+// This is like the other method but takes two pointers. These two pointers will tell you if either of the positions you provided are out of bounds.
+static inline signed int getBitFieldSignedIntChecked(const signed int bitField, const unsigned char startPosition, const unsigned char endPosition, bool *restrict const isStartPositionInBounds, bool *restrict const isEndPositionInBounds);
+// This takes the same number of parameters like the first get method but crashes if it encounters any errors. A detailed error message providing you all the information you need will be printed before the crash.
+static inline signed int getBitFieldSignedIntCheckedCrash(const signed int bitField, const unsigned char startPosition, const unsigned char endPosition);
+// This is used to set a bit field. It doesn't take a pointer so you'd equal the variable to the function call.
+static inline signed int setBitFieldSignedInt(const signed int bitField, const unsigned char startPosition, const unsigned char endPosition, const signed int bitFieldValue);
+// This has the same position checks as the other non crash check method but it also has a check to make sure the value you're setting the bit field to doesn't overflow.
+static inline signed int setBitFieldSignedIntChecked(const signed int bitField, const unsigned char startPosition, const unsigned char endPosition, const signed int bitFieldValue, bool *restrict const bitFieldValueStaysWithinTheBitLimit, bool *restrict const isStartPositionInBounds, bool *restrict const isEndPositionInBounds);
+// This has all the checks as the method you just saw but it crashes and prints a detailed error message if it encounters an issue.
+static inline signed int setBitFieldSignedIntCheckedCrash(const signed int bitField, const unsigned char startPosition, const unsigned char endPosition, const signed int bitFieldValue);
+```
